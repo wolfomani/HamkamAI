@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - دليل استخدام منصة Hamkam AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #8B4513 100%);
+            min-height: 100vh;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .code-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #FFD700;
+            transform: translateY(-2px);
+        }
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            height: 1px;
+            margin: 2rem 0;
+        }
+        .stats-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 69, 19, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        .api-endpoint {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 4px solid #00BFFF;
+        }
+        table {
+            background: rgba(255, 255, 255, 0.05);
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(255, 215, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <div class="container mx-auto px-6 py-8 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-black mb-4">
+                <span class="gradient-text">Hamkam AI</span>
+            </h1>
+            <p class="text-2xl font-light text-gray-300 mb-6">منصة الذكاء الاصطناعي الرائدة في منطقة الشرق الأوسط وشمال أفريقيا</p>
+            <div class="flex justify-center space-x-4 space-x-reverse">
+                <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">v2.0.1</span>
+                <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">مفتوح المصدر</span>
+                <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">دعم العربية</span>
+            </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="bg-gray-900 rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-navigation mr-3"></i>
+                فهرس المحتويات
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#overview" class="text-blue-400 hover:text-blue-300 transition-colors">نظرة عامة</a>
+                <a href="#features" class="text-blue-400 hover:text-blue-300 transition-colors">المميزات</a>
+                <a href="#installation" class="text-blue-400 hover:text-blue-300 transition-colors">التثبيت</a>
+                <a href="#usage" class="text-blue-400 hover:text-blue-300 transition-colors">الاستخدام</a>
+                <a href="#api" class="text-blue-400 hover:text-blue-300 transition-colors">API</a>
+                <a href="#pricing" class="text-blue-400 hover:text-blue-300 transition-colors">الأسعار</a>
+                <a href="#support" class="text-blue-400 hover:text-blue-300 transition-colors">الدعم</a>
+                <a href="#roadmap" class="text-blue-400 hover:text-blue-300 transition-colors">خارطة الطريق</a>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <section id="overview" class="mb-12">
+            <h2 class="text-4xl font-bold mb-6 gradient-text">📋 نظرة عامة</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                        Hamkam AI هي منصة متطورة للذكاء الاصطناعي مصممة خصيصاً للشركات الصغيرة والمتوسطة في منطقة الشرق الأوسط وشمال أفريقيا. تجمع المنصة بين قوة الذكاء الاصطناعي المتقدم والفهم العميق للثقافة والاحتياجات المحلية.
+                    </p>
+                    <div class="feature-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">🎯 الهدف الرئيسي</h3>
+                        <p class="text-gray-300">
+                            تمكين الشركات من الاستفادة من تقنيات الذكاء الاصطناعي المتطورة بطريقة مبسطة ومناسبة ثقافياً، مع دعم كامل للغة العربية وفهم السياق المحلي.
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="stats-card rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-2">إحصائيات السوق</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span>الاقتصاد الرقمي 2025</span>
+                                <span class="font-bold text-green-400">$200B</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>مستخدمي الإنترنت المحمول 2030</span>
+                                <span class="font-bold text-blue-400">425M</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>الشركات التي تعتمد على AI</span>
+                                <span class="font-bold text-purple-400">72%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>نمو سوق AI (2024-2030)</span>
+                                <span class="font-bold text-orange-400">$26.6B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">⚡ المميزات الرئيسية</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">ذكاء اصطناعي متقدم</h3>
+                    <p class="text-gray-300">نماذج AI حديثة مدربة على البيانات العربية والمحتوى المحلي لضمان دقة وجودة عالية في الردود.</p>
+                </div>
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">دعم كامل للغة العربية</h3>
+                    <p class="text-gray-300">واجهة مستخدم باللغة العربية مع دعم كامل للنصوص من اليمين إلى اليسار ومعالجة طبيعية للغة العربية.</p>
+                </div>
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">🏢</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">مصمم للشركات الصغيرة والمتوسطة</h3>
+                    <p class="text-gray-300">حلول مخصصة للشركات الناشئة والمتوسطة مع أسعار تنافسية وخطط مرنة تناسب جميع الاحتياجات.</p>
+                </div>
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">🔗</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">API قوي ومرن</h3>
+                    <p class="text-gray-300">واجهة برمجة تطبيقات شاملة تتيح للمطورين دمج قدرات الذكاء الاصطناعي في تطبيقاتهم بسهولة.</p>
+                </div>
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">تحليلات متقدمة</h3>
+                    <p class="text-gray-300">لوحات تحكم تفاعلية توفر رؤى عميقة حول الأداء والاستخدام لمساعدة الشركات في اتخاذ قرارات مدروسة.</p>
+                </div>
+                <div class="feature-card rounded-lg p-6">
+                    <div class="text-3xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-3 text-yellow-400">أمان وخصوصية</h3>
+                    <p class="text-gray-300">حماية عالية المستوى للبيانات مع التزام كامل بمعايير الخصوصية المحلية والدولية.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Installation Section -->
+        <section id="installation" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">🚀 التثبيت والإعداد</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">متطلبات النظام</h3>
+                    <ul class="text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>Node.js 16.0 أو أحدث</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>npm 8.0 أو أحدث</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>RAM 4GB كحد أدنى</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>مساحة تخزين 2GB</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">خطوات التثبيت</h3>
+                    <div class="space-y-4">
+                        <div class="code-block p-4">
+                            <p class="text-sm text-gray-400 mb-2">1. تحميل المشروع</p>
+                            <code class="text-green-400">git clone https://github.com/3RBAI/wolf-ai.git</code>
+                        </div>
+                        <div class="code-block p-4">
+                            <p class="text-sm text-gray-400 mb-2">2. الانتقال للمجلد</p>
+                            <code class="text-green-400">cd wolf-ai</code>
+                        </div>
+                        <div class="code-block p-4">
+                            <p class="text-sm text-gray-400 mb-2">3. تثبيت المكتبات</p>
+                            <code class="text-green-400">npm install</code>
+                        </div>
+                        <div class="code-block p-4">
+                            <p class="text-sm text-gray-400 mb-2">4. تشغيل المشروع</p>
+                            <code class="text-green-400">npm start</code>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">إعداد متغيرات البيئة</h3>
+                    <div class="code-block p-4 mb-6">
+                        <p class="text-sm text-gray-400 mb-2">إنشاء ملف .env</p>
+                        <code class="text-green-400">
+                            WOLF_AI_API_KEY=your_api_key_here<br>
+                            WOLF_AI_ENDPOINT=https://api.wolfai.com<br>
+                            WOLF_AI_MODEL=wolf-v2<br>
+                            WOLF_AI_LANGUAGE=ar<br>
+                            WOLF_AI_REGION=mena
+                        </code>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6">
+                        <h4 class="text-lg font-bold mb-3 text-blue-400">💡 نصائح التثبيت</h4>
+                        <ul class="text-gray-300 space-y-2 text-sm">
+                            <li>• تأكد من وجود اتصال إنترنت مستقر أثناء التثبيت</li>
+                            <li>• استخدم Node.js LTS للحصول على أفضل استقرار</li>
+                            <li>• قم بإعداد API Key من لوحة التحكم أولاً</li>
+                            <li>• اختبر الاتصال بـ API قبل البدء في التطوير</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Usage Section -->
+        <section id="usage" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">📱 دليل الاستخدام</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="feature-card rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">💬 واجهة المحادثة</h3>
+                    <p class="text-gray-300 mb-4">تفاعل مباشر مع الذكاء الاصطناعي من خلال واجهة محادثة بديهية:</p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>• اكتب سؤالك في صندوق النص</li>
+                        <li>• استخدم الأيقونات لإرفاق الملفات</li>
+                        <li>• احفظ المحادثات المهمة</li>
+                        <li>• شارك الردود مع فريقك</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">🎨 إنشاء المحتوى</h3>
+                    <p class="text-gray-300 mb-4">أنشئ محتوى متنوع بالذكاء الاصطناعي:</p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li>• كتابة المقالات والمدونات</li>
+                        <li>• إنشاء منشورات وسائل التواصل</li>
+                        <li>• تصميم الشعارات والهويات</li>
+                        <li>• ترجمة النصوص</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="code-block p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-yellow-400">مثال على الاستخدام الأساسي</h3>
+                <code class="text-green-400">
+                    import WolfAI from 'wolf-ai-sdk';<br><br>
+                    
+                    const wolf = new WolfAI(process.env.WOLF_AI_API_KEY);<br><br>
+                    
+                    // إرسال سؤال باللغة العربية<br>
+                    const response = await wolf.chat({<br>
+                    &nbsp;&nbsp;message: "اكتب لي مقال عن الذكاء الاصطناعي",<br>
+                    &nbsp;&nbsp;language: "ar",<br>
+                    &nbsp;&nbsp;context: "business"<br>
+                    });<br><br>
+                    
+                    console.log(response.content);
+                </code>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- API Documentation -->
+        <section id="api" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">🔌 وثائق API</h2>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-yellow-400">نقاط النهاية الرئيسية</h3>
+                <div class="space-y-4">
+                    <div class="api-endpoint rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-lg font-bold">POST /api/v1/chat</span>
+                            <span class="bg-green-500 text-white px-2 py-1 rounded text-sm">محادثة</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">إرسال رسالة والحصول على رد من الذكاء الاصطناعي</p>
+                    </div>
+                    
+                    <div class="api-endpoint rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-lg font-bold">POST /api/v1/generate</span>
+                            <span class="bg-blue-500 text-white px-2 py-1 rounded text-sm">إنشاء</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">إنشاء محتوى مخصص حسب المتطلبات</p>
+                    </div>
+                    
+                    <div class="api-endpoint rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-lg font-bold">GET /api/v1/models</span>
+                            <span class="bg-purple-500 text-white px-2 py-1 rounded text-sm">معلومات</span>
+                        </div>
+                        <p class="text-gray-300 text-sm">الحصول على قائمة النماذج المتاحة</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">مثال على طلب API</h3>
+                    <div class="code-block p-4">
+                        <code class="text-green-400">
+                            curl -X POST https://api.wolfai.com/v1/chat \<br>
+                            &nbsp;&nbsp;-H "Authorization: Bearer YOUR_API_KEY" \<br>
+                            &nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+                            &nbsp;&nbsp;-d '{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"message": "مرحبا",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"language": "ar",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"max_tokens": 1000<br>
+                            &nbsp;&nbsp;}'
+                        </code>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">مثال على الاستجابة</h3>
+                    <div class="code-block p-4">
+                        <code class="text-green-400">
+                            {<br>
+                            &nbsp;&nbsp;"status": "success",<br>
+                            &nbsp;&nbsp;"data": {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"message": "مرحبا! كيف يمكنني مساعدتك اليوم؟",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"tokens_used": 15,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"model": "wolf-v2",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"language": "ar"<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">💰 خطط الأسعار</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="feature-card rounded-lg p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Freemium</h3>
+                    <div class="text-4xl font-bold mb-4">مجاني</div>
+                    <ul class="text-gray-300 space-y-2 mb-6 text-sm">
+                        <li>• 1,000 رسالة شهرياً</li>
+                        <li>• دعم أساسي</li>
+                        <li>• نماذج محدودة</li>
+                        <li>• محادثة أساسية</li>
+                    </ul>
+                    <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg w-full transition-colors">
+                        البدء مجاناً
+                    </button>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6 text-center border-2 border-yellow-400">
+                    <div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm mb-4">الأكثر شعبية</div>
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">Premium</h3>
+                    <div class="text-4xl font-bold mb-4">$35<span class="text-lg">/شهر</span></div>
+                    <ul class="text-gray-300 space-y-2 mb-6 text-sm">
+                        <li>• رسائل غير محدودة</li>
+                        <li>• جميع النماذج</li>
+                        <li>• دعم أولوية</li>
+                        <li>• API كامل</li>
+                        <li>• تحليلات متقدمة</li>
+                    </ul>
+                    <button class="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-lg w-full transition-colors font-bold">
+                        اختر Premium
+                    </button>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-400">Enterprise</h3>
+                    <div class="text-4xl font-bold mb-4">$75<span class="text-lg">/شهر</span></div>
+                    <ul class="text-gray-300 space-y-2 mb-6 text-sm">
+                        <li>• كل مميزات Premium</li>
+                        <li>• دعم مخصص 24/7</li>
+                        <li>• تدريب مخصص</li>
+                        <li>• SLA مضمون</li>
+                        <li>• تكامل مخصص</li>
+                    </ul>
+                    <button class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-lg w-full transition-colors">
+                        تواصل معنا
+                    </button>
+                </div>
+            </div>
+
+            <div class="feature-card rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-yellow-400">مقارنة مع المنافسين</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr>
+                                <th class="p-3 text-right">الخدمة</th>
+                                <th class="p-3 text-center">السعر الشهري</th>
+                                <th class="p-3 text-center">دعم العربية</th>
+                                <th class="p-3 text-center">API</th>
+                                <th class="p-3 text-center">الدعم</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3 font-bold text-yellow-400">Hamkam AI</td>
+                                <td class="p-3 text-center">$15-75</td>
+                                <td class="p-3 text-center text-green-400">✓ كامل</td>
+                                <td class="p-3 text-center text-green-400">✓ متقدم</td>
+                                <td class="p-3 text-center text-green-400">✓ 24/7</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">Looka</td>
+                                <td class="p-3 text-center">$96</td>
+                                <td class="p-3 text-center text-red-400">✗ محدود</td>
+                                <td class="p-3 text-center text-red-400">✗ لا</td>
+                                <td class="p-3 text-center text-yellow-400">~ أساسي</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">GoDaddy Airo</td>
+                                <td class="p-3 text-center">$11.99</td>
+                                <td class="p-3 text-center text-red-400">✗ لا</td>
+                                <td class="p-3 text-center text-yellow-400">~ محدود</td>
+                                <td class="p-3 text-center text-yellow-400">~ أساسي</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Performance Metrics -->
+        <section id="performance" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">📊 مقاييس الأداء</h2>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="stats-card rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-green-400 mb-2">99.9%</div>
+                    <div class="text-gray-300">وقت التشغيل</div>
+                </div>
+                <div class="stats-card rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">&lt;200ms</div>
+                    <div class="text-gray-300">زمن الاستجابة</div>
+                </div>
+                <div class="stats-card rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-purple-400 mb-2">95%</div>
+                    <div class="text-gray-300">دقة الترجمة العربية</div>
+                </div>
+                <div class="stats-card rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-orange-400 mb-2">50K+</div>
+                    <div class="text-gray-300">مستخدم نشط</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Support Section -->
+        <section id="support" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">🛟 الدعم والمساعدة</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="feature-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">📞 قنوات التواصل</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                                <span class="text-gray-300">wolfonlyoman@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                                <span class="text-gray-300">wolfaiOM@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-github text-purple-400 mr-3"></i>
+                                <span class="text-gray-300">github.com/3RBAI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">🕒 أوقات الدعم</h3>
+                        <div class="space-y-2 text-gray-300">
+                            <div>الأحد - الخميس: 9:00 - 18:00 (توقيت الخليج)</div>
+                            <div>الجمعة - السبت: 10:00 - 16:00 (توقيت الخليج)</div>
+                            <div class="text-green-400">دعم طوارئ Enterprise: 24/7</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="feature-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">📚 الموارد التعليمية</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-book text-green-400 mr-3"></i>
+                                <span>دليل المطورين الكامل</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-video text-red-400 mr-3"></i>
+                                <span>فيديوهات تعليمية</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-comments text-blue-400 mr-3"></i>
+                                <span>منتدى المجتمع</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-question-circle text-yellow-400 mr-3"></i>
+                                <span>الأسئلة الشائعة</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card rounded-lg p-6">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">🏆 مستويات الدعم</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Community</span>
+                                <span class="text-green-400">مجاني</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Priority</span>
+                                <span class="text-yellow-400">Premium+</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">Dedicated</span>
+                                <span class="text-purple-400">Enterprise</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="mb-12">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">🗺️ خارطة الطريق</h2>
+            
+            <div class="space-y-6">
+                <div class="feature-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-500 rounded-full w-4 h-4 mr-4"></div>
+                        <h3 class="text-xl font-bold text-green-400">Q1 2024 - مكتمل</h3>
+                    </div>
+                    <ul class="text-gray-300 space-y-2 mr-8">
+                        <li>• إطلاق النسخة الأساسية</li>
+                        <li>• دعم اللغة العربية</li>
+                        <li>• API الأساسي</li>
+                        <li>• واجهة المحادثة</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-500 rounded-full w-4 h-4 mr-4"></div>
+                        <h3 class="text-xl font-bold text-yellow-400">Q2 2024 - قيد التطوير</h3>
+                    </div>
+                    <ul class="text-gray-300 space-y-2 mr-8">
+                        <li>• إنشاء الصور بالذكاء الاصطناعي</li>
+                        <li>• تحسين نماذج الترجمة</li>
+                        <li>• تطبيق الجوال</li>
+                        <li>• تكاملات جديدة</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 rounded-full w-4 h-4 mr-4"></div>
+                        <h3 class="text-xl font-bold text-blue-400">Q3 2024 - مخطط</h3>
+                    </div>
+                    <ul class="text-gray-300 space-y-2 mr-8">
+                        <li>• معالجة الصوت والفيديو</li>
+                        <li>• ذكاء اصطناعي متعدد الوسائط</li>
+                        <li>• تحسينات الأداء</li>
+                        <li>• المزيد من اللغات المحلية</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-500 rounded-full w-4 h-4 mr-4"></div>
+                        <h3 class="text-xl font-bold text-purple-400">Q4 2024 - رؤية مستقبلية</h3>
+                    </div>
+                    <ul class="text-gray-300 space-y-2 mr-8">
+                        <li>• نماذج ذكاء اصطناعي مخصصة</li>
+                        <li>• منصة No-Code للتطوير</li>
+                        <li>• تحليلات متقدمة</li>
+                        <li>• شراكات استراتيجية جديدة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-8 border-t border-gray-700">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold gradient-text mb-2">Hamkam AI</h2>
+                <p class="text-gray-400">مستقبل الذكاء الاصطناعي في العالم العربي</p>
+            </div>
+            
+            <div class="flex justify-center space-x-6 space-x-reverse mb-6">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+            
+            <div class="text-gray-500 text-sm">
+                <p>&copy; 2025 Hamkam AI. جميع الحقوق محفوظة.</p>
+                <p class="mt-2">بناء المستقبل، كلمة واحدة في كل مرة.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

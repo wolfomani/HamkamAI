@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamkam AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        .sidebar-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .main-logo {
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .input-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .bottom-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .bottom-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+        
+        .send-btn {
+            background: #1d4ed8;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .response-area {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .provider-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .provider-select option {
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .typing-indicator {
+            display: none;
+        }
+        
+        .typing-indicator.active {
+            display: flex;
+        }
+        
+        .dot {
+            animation: typing 1.4s infinite;
+        }
+        
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex">
+    
+    <!-- الشريط الجانبي الأيسر -->
+    <div class="w-16 bg-black bg-opacity-60 flex flex-col items-center py-4 space-y-4">
+        <!-- أيقونة الصفحة الرئيسية -->
+        <div class="sidebar-icon w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center cursor-pointer">
+            <i class="fas fa-home text-white text-sm"></i>
+        </div>
+        
+        <!-- أيقونة الترجمة -->
+        <div class="sidebar-icon w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer">
+            <i class="fas fa-language text-white text-sm"></i>
+        </div>
+        
+        <!-- أيقونة القفل -->
+        <div class="sidebar-icon w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer">
+            <i class="fas fa-lock text-white text-sm"></i>
+        </div>
+        
+        <!-- أيقونة التحديث -->
+        <div class="sidebar-icon w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer" onclick="location.reload()">
+            <i class="fas fa-sync-alt text-white text-sm"></i>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="flex-1 flex flex-col">
+        
+        <!-- الهيدر العلوي -->
+        <div class="flex justify-center items-center py-6 space-x-4 space-x-reverse">
+            <!-- زر الإعدادات -->
+            <button class="control-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                <i class="fas fa-cog"></i>
+                <span>إعدادات</span>
+            </button>
+            
+            <!-- زر آخر الأخبار -->
+            <button class="control-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                <i class="fas fa-newspaper"></i>
+                <span>آخر الأخبار</span>
+            </button>
+            
+            <!-- زر تحديل الصوت -->
+            <button class="control-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                <i class="fas fa-microphone"></i>
+                <span>تحديل الصوت</span>
+            </button>
+        </div>
+
+        <!-- المنطقة الوسطى -->
+        <div class="flex-1 flex flex-col justify-center items-center px-8">
+            
+            <!-- شعار WOLF -->
+            <div class="mb-8 text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-wolf-pack-battalion text-4xl text-white mr-3"></i>
+                    <h1 class="main-logo">WOLF</h1>
+                </div>
+                <p class="text-gray-400 text-lg">قوة الذكاء الاصطناعي المتقدم</p>
+            </div>
+
+            <!-- منطقة عرض الردود -->
+            <div id="responseArea" class="response-area w-full max-w-4xl p-6 mb-6 text-white" style="display: none;">
+                <div class="typing-indicator items-center space-x-2 space-x-reverse mb-4">
+                    <div class="dot w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div class="dot w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div class="dot w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span class="text-gray-400 mr-3">يكتب WOLF...</span>
+                </div>
+                <div id="responseContent" class="text-gray-200 leading-relaxed"></div>
+            </div>
+
+            <!-- أزرار التحكم العلوية -->
+            <div class="flex space-x-4 space-x-reverse mb-6">
+                <button class="control-btn px-6 py-3 rounded-full text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-plus"></i>
+                    <span>مساعدات الميس جديد</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- منطقة الإدخال السفلى -->
+        <div class="p-6">
+            
+            <!-- اختيار مقدم الخدمة -->
+            <div class="mb-4 flex justify-center">
+                <select id="providerSelect" class="provider-select px-4 py-2 rounded-full text-sm">
+                    <option value="together">Together AI - DeepSeek V3</option>
+                    <option value="groq">Groq - Llama 3.3 70B</option>
+                    <option value="mistral">Mistral - Codestral</option>
+                </select>
+            </div>
+            
+            <!-- صندوق الإدخال -->
+            <div class="input-container flex items-center p-4 max-w-4xl mx-auto">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="ماذا تريد أن تعرف؟" 
+                    class="flex-1 bg-transparent text-white placeholder-gray-400 outline-none text-lg"
+                    onkeypress="handleKeyPress(event)"
+                >
+                
+                <!-- زر الإرسال -->
+                <button onclick="sendMessage()" class="send-btn w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-arrow-up text-white"></i>
+                </button>
+            </div>
+            
+            <!-- الأزرار السفلية -->
+            <div class="flex justify-center items-center mt-4 space-x-4 space-x-reverse">
+                
+                <!-- زر Grok 3 -->
+                <button class="bottom-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-brain"></i>
+                    <span>WOLF 3</span>
+                </button>
+                
+                <!-- زر Think -->
+                <button class="bottom-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Think</span>
+                </button>
+                
+                <!-- زر DeeperSearch -->
+                <button class="bottom-btn px-4 py-2 rounded-full text-sm text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-search-plus"></i>
+                    <span>DeeperSearch</span>
+                </button>
+                
+                <!-- زر الإرفاق -->
+                <button class="bottom-btn w-10 h-10 rounded-full flex items-center justify-center">
+                    <i class="fas fa-paperclip text-white"></i>
+                </button>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <script>
+        // التعامل مع الضغط على Enter
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // إرسال الرسالة
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const provider = document.getElementById('providerSelect').value;
+            const responseArea = document.getElementById('responseArea');
+            const responseContent = document.getElementById('responseContent');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            
+            if (!input.value.trim()) return;
+            
+            const userMessage = input.value.trim();
+            input.value = '';
+            
+            // إظهار منطقة الردود
+            responseArea.style.display = 'block';
+            
+            // إظهار مؤشر الكتابة
+            typingIndicator.classList.add('active');
+            responseContent.innerHTML = '';
+            
+            // تحديد إعدادات API
+            let url = '';
+            let headers = { 'Content-Type': 'application/json' };
+            let body = {};
+
+            if (provider === 'together') {
+                url = 'https://api.together.xyz/v1/chat/completions';
+                headers['Authorization'] = 'Bearer 1bce60114d699d9ab9cefe3fa0e6799d468c9653ed1859617672e2c686c7706b';
+                body = {
+                    model: "deepseek-ai/DeepSeek-V3",
+                    messages: [{ role: "user", content: userMessage }],
+                    max_tokens: 1000,
+                    temperature: 0.7
+                };
+            } else if (provider === 'groq') {
+                url = 'https://api.groq.com/openai/v1/chat/completions';
+                headers['Authorization'] = 'Bearer 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';
+                body = {
+                    model: "llama-3.3-70b-versatile",
+                    messages: [{ role: "user", content: userMessage }],
+                    max_tokens: 1000,
+                    temperature: 0.7
+                };
+            } else if (provider === 'mistral') {
+                url = 'https://codestral.mistral.ai/v1/chat/completions';
+                headers['Authorization'] = 'Bearer bXgjjPQ9sXZY8zCtncPzhKJPc3XSilLR';
+                body = {
+                    model: "codestral-latest",
+                    messages: [{ role: "user", content: userMessage }],
+                    max_tokens: 1000,
+                    temperature: 0.7
+                };
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers,
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                // إخفاء مؤشر الكتابة
+                typingIndicator.classList.remove('active');
+                
+                if (data?.choices?.[0]?.message?.content) {
+                    const reply = data.choices[0].message.content;
+                    
+                    // عرض السؤال
+                    responseContent.innerHTML = `
+                        <div class="mb-4 p-3 bg-blue-600 bg-opacity-20 rounded-lg border-r-4 border-blue-500">
+                            <div class="text-blue-300 text-sm mb-1">أنت:</div>
+                            <div class="text-white">${userMessage}</div>
+                        </div>
+                    `;
+                    
+                    // كتابة الرد تدريجياً
+                    await typeText(reply);
+                    
+                } else {
+                    responseContent.innerHTML = `
+                        <div class="text-red-400 p-4 bg-red-900 bg-opacity-20 rounded-lg border border-red-500">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            عذراً، لم أتمكن من الحصول على رد صحيح من الخادم.
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                // إخفاء مؤشر الكتابة
+                typingIndicator.classList.remove('active');
+                
+                responseContent.innerHTML = `
+                    <div class="text-red-400 p-4 bg-red-900 bg-opacity-20 rounded-lg border border-red-500">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        حدث خطأ في الاتصال: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // كتابة النص تدريجياً
+        async function typeText(text) {
+            const responseContent = document.getElementById('responseContent');
+            
+            // إضافة عنوان الرد
+            const replyDiv = document.createElement('div');
+            replyDiv.className = 'mb-4 p-3 bg-gray-800 bg-opacity-40 rounded-lg border-r-4 border-green-500';
+            replyDiv.innerHTML = `
+                <div class="text-green-300 text-sm mb-2 flex items-center">
+                    <i class="fas fa-wolf-pack-battalion mr-2"></i>
+                    WOLF AI:
+                </div>
+                <div class="text-white leading-relaxed" id="typingText"></div>
+            `;
+            
+            responseContent.appendChild(replyDiv);
+            
+            const typingElement = document.getElementById('typingText');
+            
+            // كتابة الحروف تدريجياً
+            for (let i = 0; i < text.length; i++) {
+                typingElement.textContent += text[i];
+                await new Promise(resolve => setTimeout(resolve, 20));
+                
+                // التمرير إلى الأسفل
+                responseContent.scrollTop = responseContent.scrollHeight;
+            }
+        }
+
+        // تحديث placeholder حسب المقدم المختار
+        document.getElementById('providerSelect').addEventListener('change', function() {
+            const input = document.getElementById('messageInput');
+            const provider = this.value;
+            
+            switch(provider) {
+                case 'together':
+                    input.placeholder = 'اسأل DeepSeek V3 أي شيء...';
+                    break;
+                case 'groq':
+                    input.placeholder = 'اسأل Llama 3.3 أي شيء...';
+                    break;
+                case 'mistral':
+                    input.placeholder = 'اسأل Mistral أي شيء...';
+                    break;
+                default:
+                    input.placeholder = 'ماذا تريد أن تعرف؟';
+            }
+        });
+
+        // رسائل ترحيبية
+        const welcomeMessages = [
+            "مرحباً! أنا Hamkam AI، 👑🚬 ",
+            "أهلاً ",
+            "مرحباً! كيف يمكنني مساعدتك اليوم؟ ✨"
+        ];
+
+        // عرض رسالة ترحيبية عشوائية عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const randomMessage = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
+                const responseArea = document.getElementById('responseArea');
+                const responseContent = document.getElementById('responseContent');
+                
+                responseArea.style.display = 'block';
+                responseContent.innerHTML = `
+                    <div class="p-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-20 rounded-lg border border-blue-500 text-center">
+                        <div class="text-2xl mb-2">🐺</div>
+                        <div class="text-white text-lg">${randomMessage}</div>
+                    </div>
+                `;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
