@@ -1,0 +1,205 @@
+<!-- chat.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>krkrai - المحادثة</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+  <div class="chat-layout">
+    <!-- شريط المحادثات الجانبي -->
+    <aside class="chat-history">
+      <div class="history-header">
+        <h3>المحادثات</h3>
+        <button class="btn new-chat-btn">+ محادثة جديدة</button>
+      </div>
+      
+      <div class="history-list">
+        <div class="history-item active">
+          <div class="item-icon">💬</div>
+          <div class="item-content">
+            <div class="item-title">تصميم واجهة مستخدم</div>
+            <div class="item-preview">ما هي أفضل الممارسات لتصميم واجهة مستخدم...</div>
+          </div>
+        </div>
+        
+        <div class="history-item">
+          <div class="item-icon">💻</div>
+          <div class="item-content">
+            <div class="item-title">تصحيح كود JavaScript</div>
+            <div class="item-preview">لدي مشكلة في وظيفة غير متزامنة...</div>
+          </div>
+        </div>
+        
+        <div class="history-item">
+          <div class="item-icon">📊</div>
+          <div class="item-content">
+            <div class="item-title">تحليل بيانات المبيعات</div>
+            <div class="item-preview">هل يمكنك مساعدتي في تحليل بيانات المبيعات...</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- منطقة المحادثة الرئيسية -->
+    <main class="chat-main">
+      <div class="chat-header">
+        <div class="chat-info">
+          <div class="chat-title">تصميم واجهة مستخدم</div>
+          <div class="model-indicator">
+            <span class="model-name">krkrai-4</span>
+            <span class="online-indicator">●</span>
+          </div>
+        </div>
+        
+        <div class="chat-actions">
+          <button class="action-btn">شارك</button>
+          <button class="action-btn">حفظ</button>
+          <button class="action-btn">مسح</button>
+        </div>
+      </div>
+      
+      <div class="chat-messages">
+        <!-- رسائل المحادثة -->
+        <div class="message user">
+          <div class="message-avatar">👤</div>
+          <div class="message-content">
+            <div class="message-text">ما هي أفضل الممارسات لتصميم واجهة مستخدم مظلمة تجمع بين الجماليات والوظيفية؟</div>
+            <div class="message-time">10:25 ص</div>
+          </div>
+        </div>
+        
+        <div class="message assistant">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <div class="message-text">
+              <p>تصميم الواجهات المظلمة يتطلب عناية خاصة لتحقيق التوازن بين الجماليات والوظيفية. إليك أفضل الممارسات:</p>
+              <ol>
+                <li><strong>التدرج اللوني:</strong> استخدم درجات متعددة من اللون الداكن لتحديد التسلسل الهرمي البصري.</li>
+                <li><strong>التباين الكافي:</strong> تأكد من أن النصوص والعناصر التفاعلية تتميز بتباين عالٍ لسهولة القراءة.</li>
+                <li><strong>اللمسات المضيئة:</strong> استخدم لونًا مميزًا (#00F5A0 في حالتنا) للعناصر التفاعلية لتمييزها.</li>
+                <li><strong>المساحات البيضاء:</strong> لا تهمل المساحات البيضاء (الفضاء السلبي) لتحسين قابلية المسح البصري.</li>
+                <li><strong>الظلال والعمق:</strong> استخدم الظلال الخفيفة لخلق إحساس بالعمق والتمييز بين الطبقات.</li>
+              </ol>
+            </div>
+            <div class="message-actions">
+              <button class="action-btn">أعد صياغة</button>
+              <button class="action-btn">انسخ</button>
+              <button class="action-btn">شارك</button>
+            </div>
+            <div class="message-time">10:26 ص</div>
+          </div>
+        </div>
+        
+        <!-- رسالة أثناء التفكير -->
+        <div class="message assistant thinking">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <div class="thinking-indicator">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <span>يبحث الآن...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="chat-input-area">
+        <div class="input-actions">
+          <button class="action-btn" title="رفع ملف">📎</button>
+          <button class="action-btn" title="التصويب">🎤</button>
+        </div>
+        
+        <textarea 
+          placeholder="اكتب رسالتك هنا..." 
+          rows="1"
+          class="message-input"
+        ></textarea>
+        
+        <button class="btn send-btn">إرسال</button>
+      </div>
+    </main>
+  </div>
+  
+  <script>
+    // إدارة نموذج التفكير
+    const thinkingMessage = document.querySelector('.thinking');
+    
+    // إظهار نموذج التفكير عند الكتابة
+    document.querySelector('.message-input').addEventListener('input', function() {
+      if (this.value.trim()) {
+        thinkingMessage.style.display = 'flex';
+      } else {
+        thinkingMessage.style.display = 'none';
+      }
+    });
+    
+    // إرسال الرسالة
+    document.querySelector('.send-btn').addEventListener('click', function() {
+      const input = document.querySelector('.message-input');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      // إضافة رسالة المستخدم
+      addUserMessage(message);
+      input.value = '';
+      
+      // محاكاة استجابة الذكاء الاصطناعي
+      setTimeout(() => {
+        thinkingMessage.style.display = 'none';
+        addAssistantMessage('هذه استجابة محاكاة للذكاء الاصطناعي. في التطبيق الحقيقي، سيتم استبدالها باستجابة من خادم krkrai.');
+      }, 2000);
+    });
+    
+    // وظائف مساعدة لإضافة الرسائل
+    function addUserMessage(text) {
+      const messagesContainer = document.querySelector('.chat-messages');
+      
+      const messageEl = document.createElement('div');
+      messageEl.className = 'message user';
+      messageEl.innerHTML = `
+        <div class="message-avatar">👤</div>
+        <div class="message-content">
+          <div class="message-text">${text}</div>
+          <div class="message-time">${getCurrentTime()}</div>
+        </div>
+      `;
+      
+      messagesContainer.appendChild(messageEl);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    function addAssistantMessage(text) {
+      const messagesContainer = document.querySelector('.chat-messages');
+      
+      const messageEl = document.createElement('div');
+      messageEl.className = 'message assistant';
+      messageEl.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <div class="message-text">${text}</div>
+          <div class="message-actions">
+            <button class="action-btn">أعد صياغة</button>
+            <button class="action-btn">انسخ</button>
+            <button class="action-btn">شارك</button>
+          </div>
+          <div class="message-time">${getCurrentTime()}</div>
+        </div>
+      `;
+      
+      messagesContainer.appendChild(messageEl);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    function getCurrentTime() {
+      const now = new Date();
+      return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+  </script>
+</body>
+</html>
