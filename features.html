@@ -1,0 +1,201 @@
+<!-- features.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HamkamAI - الميزات</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-container">
+        <div class="logo">
+          <span class="logo-icon">🧠</span>
+          <span class="logo-text">krkrai</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="#" class="nav-link">الرئيسية</a>
+          <a href="#" class="nav-link active">الميزات</a>
+          <a href="#" class="nav-link">الوثائق</a>
+          <a href="#" class="nav-link">لوحة التحكم</a>
+        </div>
+        
+        <div class="nav-actions">
+          <button class="theme-toggle">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <button class="btn login-btn">تسجيل الدخول</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- صفحة الميزات -->
+  <div class="features-page">
+    <!-- قسم الفيديو الترويجي -->
+    <section class="hero-video">
+      <div class="video-container">
+        <video autoplay muted loop>
+          <source src="ai-promo.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay">
+          <h1>اكتشف قوة الذكاء الاصطناعي</h1>
+          <p>منصة كركري تفتح لك آفاقًا جديدة للإبداع والإنتاجية</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- قسم الإبداع المرئي -->
+    <section class="feature-section visual-creation">
+      <div class="container">
+        <div class="feature-content">
+          <h2>الإبداع المرئي</h2>
+          <p>حول أفكارك إلى صور مذهلة باستخدام الذكاء الاصطناعي المتقدم</p>
+          
+          <div class="demo-container">
+            <div class="input-area">
+              <textarea id="visual-prompt" placeholder="اكتب وصفًا للصورة التي تريد إنشاءها...">فارس في العصور الوسطى على حصان أبيض، خلفية قلعة، غروب الشمس، أسلوب فني واقعي</textarea>
+              <button class="btn generate-btn">أنشئ صورة</button>
+            </div>
+            
+            <div class="result-area">
+              <div class="image-placeholder">
+                <img id="generated-image" src="placeholder.jpg" alt="الصورة المنشأة">
+                <div class="loading-overlay" id="image-loading">
+                  <div class="spinner"></div>
+                  <p>جارٍ إنشاء صورتك...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- قسم التحليل المتقدم -->
+    <section class="feature-section advanced-analysis">
+      <div class="container">
+        <div class="feature-content">
+          <h2>التحليل المتقدم</h2>
+          <p>استخرج الرؤى من بياناتك باستخدام أدوات التحليل الذكية</p>
+          
+          <div class="stats-dashboard">
+            <div class="stat-card">
+              <div class="stat-value">98%</div>
+              <div class="stat-label">دقة التحليل</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">10x</div>
+              <div class="stat-label">زيادة في السرعة</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">24/7</div>
+              <div class="stat-label">عمل مستمر</div>
+            </div>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="analysis-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- قسم البرمجة الذكية -->
+    <section class="feature-section smart-coding">
+      <div class="container">
+        <div class="feature-content">
+          <h2>البرمجة الذكية</h2>
+          <p>مساعدك الشخصي لكتابة وتصحيح الأكواد بكل كفاءة</p>
+          
+          <div class="code-assistant">
+            <div class="code-input">
+              <textarea id="code-prompt" placeholder="اكتب طلبك البرمجي هنا...">اكتب دالة في JavaScript لتحويل التاريخ من الهجري إلى الميلادي</textarea>
+              <button class="btn generate-btn">أنشئ الكود</button>
+            </div>
+            
+            <div class="code-output">
+              <pre><code id="generated-code">// سيظهر الكود المنشأ هنا</code></pre>
+              <div class="code-actions">
+                <button class="action-btn">نسخ</button>
+                <button class="action-btn">شرح</button>
+                <button class="action-btn">تحسين</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- الدعوة النهائية -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>جاهز لبدء رحلتك مع الذكاء الاصطناعي؟</h2>
+        <p>انضم إلى آلاف المطورين والمبدعين الذين يستخدمون krkrai لتحقيق إمكاناتهم الكاملة</p>
+        <a href="#" class="btn">ابدأ مجانًا</a>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    // محاكاة إنشاء الصورة
+    document.querySelector('.generate-btn').addEventListener('click', () => {
+      const prompt = document.getElementById('visual-prompt').value;
+      const loadingOverlay = document.getElementById('image-loading');
+      
+      if (!prompt.trim()) {
+        alert('يرجى كتابة وصف للصورة');
+        return;
+      }
+      
+      loadingOverlay.style.display = 'flex';
+      
+      // محاكاة وقت التحميل
+      setTimeout(() => {
+        loadingOverlay.style.display = 'none';
+        document.getElementById('generated-image').src = `https://picsum.photos/600/400?random=${Math.random()}`;
+      }, 2000);
+    });
+    
+    // رسم مخطط التحليل
+    window.addEventListener('load', () => {
+      const ctx = document.getElementById('analysis-chart').getContext('2d');
+      
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+          datasets: [
+            {
+              label: 'دقة التحليل (%)',
+              data: [92, 94, 96, 95, 97, 98],
+              backgroundColor: '#00F5A0',
+              borderColor: '#00D489',
+              borderWidth: 1
+            },
+            {
+              label: 'الوقت المستغرق (ساعات)',
+              data: [120, 95, 80, 65, 50, 40],
+              backgroundColor: 'rgba(0, 245, 160, 0.3)',
+              borderColor: '#00D489',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
