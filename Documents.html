@@ -1,209 +1,0 @@
-<!-- documentation.html -->
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HamkamAI - وثائق API</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
-</head>
-<body data-theme="dark">
-  <div class="docs-layout">
-    <!-- الشريط الجانبي -->
-    <aside class="docs-sidebar">
-      <div class="sidebar-header">
-        <h3>وثائق API</h3>
-        <div class="search-box">
-          <input type="text" placeholder="ابحث في الوثائق...">
-          <button class="search-btn">🔍</button>
-        </div>
-      </div>
-      
-      <nav class="docs-nav">
-        <div class="nav-section">
-          <h4 class="section-title">بدء الاستخدام</h4>
-          <a href="#quickstart" class="nav-item">دليل البدء السريع</a>
-          <a href="#authentication" class="nav-item">المصادقة</a>
-          <a href="#rate-limits" class="nav-item">حدود الاستخدام</a>
-        </div>
-        
-        <div class="nav-section">
-          <h4 class="section-title">واجهات API</h4>
-          <a href="#chat-api" class="nav-item">واجهة المحادثة</a>
-          <a href="#vision-api" class="nav-item">واجهة الرؤية</a>
-          <a href="#audio-api" class="nav-item">واجهة الصوت</a>
-          <a href="#embeddings-api" class="nav-item">التضمينات</a>
-        </div>
-        
-        <div class="nav-section">
-          <h4 class="section-title">أمثلة التعليمات البرمجية</h4>
-          <a href="#javascript" class="nav-item">JavaScript</a>
-          <a href="#python" class="nav-item">Python</a>
-          <a href="#curl" class="nav-item">cURL</a>
-        </div>
-      </nav>
-    </aside>
-    
-    <!-- المحتوى الرئيسي -->
-    <main class="docs-content">
-      <article id="quickstart">
-        <h1>دليل البدء السريع</h1>
-        <p>استخدم هذه الوثائق لبدء دمج krkrai في تطبيقاتك بسرعة وسهولة.</p>
-        
-        <div class="card">
-          <h3>الخطوة 1: الحصول على مفتاح API</h3>
-          <p>سجل الدخول إلى لوحة التحكم وقم بإنشاء مفتاح API جديد.</p>
-        </div>
-        
-        <div class="card">
-          <h3>الخطوة 2: تثبيت مكتبة krkrai</h3>
-          <p>استخدم npm أو pip لتثبيت مكتبة krkrai:</p>
-          
-          <div class="code-tabs">
-            <div class="tabs">
-              <button class="tab active" data-lang="npm">npm</button>
-              <button class="tab" data-lang="pip">pip</button>
-            </div>
-            
-            <div class="code-block">
-              <pre><code class="language-bash" id="npm-code">npm install krkrai-sdk</code></pre>
-              <pre><code class="language-bash" id="pip-code" style="display: none;">pip install krkrai</code></pre>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <h3>الخطوة 3: إرسال أول طلب</h3>
-          <p>استخدم مفتاح API لإرسال طلب إلى واجهة المحادثة:</p>
-          
-          <div class="code-block">
-            <pre><code class="language-javascript">import { krkrai } from 'krkrai-sdk';
-
-const client = new krkrai({
-  apiKey: 'YOUR_API_KEY'
-});
-
-const response = await client.chat.completions.create({
-  model: 'krkrai-4',
-  messages: [
-    { role: 'user', content: 'أهلاً بك في krkrai!' }
-  ]
-});
-
-console.log(response.choices[0].message.content);</code></pre>
-            <button class="copy-code-btn">نسخ الكود</button>
-          </div>
-        </div>
-      </article>
-      
-      <article id="chat-api">
-        <h2>واجهة المحادثة</h2>
-        <p>واجهة المحادثة هي القلب النابض لـ krkrai، تتيح لك التفاعل مع النموذج باستخدام المحادثة الطبيعية.</p>
-        
-        <div class="code-block">
-          <pre><code class="language-javascript">// مثال: محادثة متعددة الأدوار
-const response = await client.chat.completions.create({
-  model: 'krkrai-4',
-  messages: [
-    { role: 'system', content: 'أنت مساعد مفيد يتحدث العربية الفصحى.' },
-    { role: 'user', content: 'ما هو الطقس اليوم في الرياض؟' },
-    { role: 'assistant', content: 'لا يمكنني الوصول إلى معلومات الطقس الحية. هل تريد مساعدة في شيء آخر؟' },
-    { role: 'user', content: 'أخبرني نكتة عن الذكاء الاصطناعي' }
-  ],
-  temperature: 0.7,
-  max_tokens: 500
-});</code></pre>
-          <button class="copy-code-btn">نسخ الكود</button>
-        </div>
-        
-        <h3>المعلمات</h3>
-        <div class="table-responsive">
-          <table class="params-table">
-            <thead>
-              <tr>
-                <th>المعلمة</th>
-                <th>النوع</th>
-                <th>الوصف</th>
-                <th>الافتراضي</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>model</td>
-                <td>string</td>
-                <td>معرف النموذج المراد استخدامه</td>
-                <td>مطلوب</td>
-              </tr>
-              <tr>
-                <td>messages</td>
-                <td>array</td>
-                <td>مصفوفة من رسائل المحادثة</td>
-                <td>مطلوب</td>
-              </tr>
-              <tr>
-                <td>temperature</td>
-                <td>number</td>
-                <td>درجة الإبداع (0-2)</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>max_tokens</td>
-                <td>integer</td>
-                <td>الحد الأقصى للرموز المراد توليدها</td>
-                <td>غير محدد</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
-    </main>
-  </div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-  <script>
-    // تهيئة تسليط الضوء على الشفرة البرمجية
-    document.addEventListener('DOMContentLoaded', (event) => {
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
-      });
-    });
-    
-    // تبديل بين ألسنة التعليمات البرمجية
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const lang = tab.getAttribute('data-lang');
-        
-        // تحديث الألسنة النشطة
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        
-        // إظهار الكود المحدد
-        document.querySelectorAll('.code-block pre').forEach(pre => {
-          pre.style.display = 'none';
-        });
-        
-        document.getElementById(`${lang}-code`).style.display = 'block';
-      });
-    });
-    
-    // نسخ الشفرة البرمجية
-    document.querySelectorAll('.copy-code-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const codeBlock = btn.previousElementSibling;
-        const textToCopy = codeBlock.textContent;
-        
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          const originalText = btn.textContent;
-          btn.textContent = 'تم النسخ!';
-          
-          setTimeout(() => {
-            btn.textContent = originalText;
-          }, 2000);
-        });
-      });
-    });
-  </script>
-</body>
-</html>
