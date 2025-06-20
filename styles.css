@@ -1,0 +1,112 @@
+/* styles.css */
+:root {
+  /* نظام الألوان */
+  --dark-bg: #121212;
+  --light-bg: #FFFFFF;
+  --text-dark: #EAEAEA;
+  --text-light: #181818;
+  --accent: #00F5A0;
+  --card-bg: #1E1E1E;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  
+  /* نظام الطباعة */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --h1: 3.5rem;
+  --h2: 2.5rem;
+  --h3: 1.8rem;
+  --body: 1.1rem;
+  --small: 0.9rem;
+}
+
+[data-theme="light"] {
+  --bg: var(--light-bg);
+  --text: var(--text-light);
+  --card-bg: #F8F9FA;
+  --border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg: var(--dark-bg);
+  --text: var(--text-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--accent);
+  color: var(--dark-bg);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: var(--body);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 245, 160, 0.3);
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+h3 {
+  font-size: var(--h3);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: var(--body);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
