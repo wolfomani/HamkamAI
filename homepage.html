@@ -1,0 +1,224 @@
+<!-- homepage.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HamkamAI - الذكاء الذي يرى ما لا تراه</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+  <!-- شريط التنقل العلوي -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-container">
+        <div class="logo">
+          <span class="logo-icon">🧠</span>
+          <span class="logo-text">krkrai</span>
+        </div>
+        
+        <div class="nav-links">
+          <a href="#" class="nav-link active">الرئيسية</a>
+          <a href="#" class="nav-link">الميزات</a>
+          <a href="#" class="nav-link">الوثائق</a>
+          <a href="#" class="nav-link">لوحة التحكم</a>
+        </div>
+        
+        <div class="nav-actions">
+          <button class="theme-toggle">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <button class="btn login-btn">تسجيل الدخول</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- القسم العلوي (Hero Section) -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>krkrai: ذكاءٌ يرى ما لا تراه</h1>
+        <p class="hero-subtitle">منصة الذكاء الاصطناعي المتقدمة التي تقدم حلولًا مبتكرة للبحث، التحليل، البرمجة، والإبداع المرئي</p>
+        
+        <div class="hero-actions">
+          <a href="#" class="btn">جرّب المحادثة الآن</a>
+          <a href="#" class="btn btn-outline">استكشف وثائق الـ API</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- رسم متحرك لشبكة عصبونية -->
+    <div class="neural-network-animation">
+      <!-- سيتم تنفيذ هذا الجزء باستخدام Canvas -->
+    </div>
+  </section>
+
+  <!-- قسم القدرات -->
+  <section class="capabilities">
+    <div class="container">
+      <h2 class="section-title">قدراتنا الرئيسية</h2>
+      
+      <div class="cards-grid">
+        <!-- بطاقة البحث -->
+        <div class="card capability-card">
+          <div class="capability-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3>بحث متقدم</h3>
+          <p class="capability-desc">ابحث في كميات هائلة من البيانات بذكاء وسرعة فائقة</p>
+        </div>
+        
+        <!-- بطاقة التحليل -->
+        <div class="card capability-card">
+          <div class="capability-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <h3>تحليل دقيق</h3>
+          <p class="capability-desc">حلل البيانات واستخرج الرؤى بطرق مبتكرة</p>
+        </div>
+        
+        <!-- بطاقة البرمجة -->
+        <div class="card capability-card">
+          <div class="capability-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>برمجة ذكية</h3>
+          <p class="capability-desc">ساعد في كتابة وتصحيح الأكواد بذكاء</p>
+        </div>
+        
+        <!-- بطاقة التصوير -->
+        <div class="card capability-card">
+          <div class="capability-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="14" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <h3>إبداع مرئي</h3>
+          <p class="capability-desc">أنشئ صورًا فريدة من النصوص والأوصاف</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // تنفيذ شبكة عصبونية متحركة
+    function createNeuralNetworkAnimation() {
+      const canvas = document.createElement('canvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.position = 'absolute';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.zIndex = '-1';
+      canvas.style.opacity = '0.5';
+      
+      document.querySelector('.hero').appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      const nodes = [];
+      const connections = [];
+      
+      // إنشاء العقد
+      for (let i = 0; i < 30; i++) {
+        nodes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: 2 + Math.random() * 3,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5
+        });
+      }
+      
+      // إنشاء اتصالات
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          if (Math.random() > 0.7) {
+            connections.push({
+              from: i,
+              to: j,
+              opacity: 0
+            });
+          }
+        }
+      }
+      
+      // رسم الرسوم المتحركة
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // رسم الاتصالات
+        ctx.strokeStyle = '#00F5A0';
+        ctx.lineWidth = 1;
+        
+        for (const conn of connections) {
+          const from = nodes[conn.from];
+          const to = nodes[conn.to];
+          
+          // حساب المسافة
+          const dx = to.x - from.x;
+          const dy = to.y - from.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < 200) {
+            conn.opacity = Math.min(1, conn.opacity + 0.01);
+            ctx.globalAlpha = conn.opacity * 0.3;
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
+            ctx.stroke();
+          } else {
+            conn.opacity = Math.max(0, conn.opacity - 0.01);
+          }
+        }
+        
+        // رسم العقد
+        ctx.fillStyle = '#00F5A0';
+        
+        for (const node of nodes) {
+          ctx.globalAlpha = 0.8;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // تحديث الموضع
+          node.x += node.vx;
+          node.y += node.vy;
+          
+          // التحقق من الحدود
+          if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+          if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    }
+    
+    // تبديل الوضع الداكن/الفاتح
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', newTheme);
+      document.querySelector('.theme-icon').textContent = newTheme === 'dark' ? '🌙' : '☀️';
+    });
+    
+    // تهيئة الشبكة العصبونية
+    window.addEventListener('load', createNeuralNetworkAnimation);
+  </script>
+</body>
+</html>
