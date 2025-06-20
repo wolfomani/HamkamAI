@@ -1,216 +1,0 @@
-<!-- api-keys.html -->
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HamkamAI - لوحة التحكم</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body data-theme="dark">
-  <div class="dashboard-layout">
-    <!-- الشريط الجانبي -->
-    <aside class="sidebar">
-      <div class="logo">
-        <span class="logo-icon">🧠</span>
-        <span class="logo-text">krkrai</span>
-      </div>
-      
-      <nav class="sidebar-nav">
-        <a href="#" class="nav-item">
-          <span class="nav-icon">🏠</span>
-          <span class="nav-text">الرئيسية</span>
-        </a>
-        <a href="#" class="nav-item active">
-          <span class="nav-icon">🔑</span>
-          <span class="nav-text">مفاتيح API</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">📊</span>
-          <span class="nav-text">التحليلات</span>
-        </a>
-        <a href="#" class="nav-item">
-          <span class="nav-icon">⚙️</span>
-          <span class="nav-text">الإعدادات</span>
-        </a>
-      </nav>
-    </aside>
-    
-    <!-- المحتوى الرئيسي -->
-    <main class="dashboard-content">
-      <div class="dashboard-header">
-        <h1>لوحة التحكم</h1>
-        <button class="btn" id="create-key-btn">+ إنشاء مفتاح جديد</button>
-      </div>
-      
-      <!-- جدول مفاتيح API -->
-      <div class="card">
-        <div class="table-responsive">
-          <table class="api-keys-table">
-            <thead>
-              <tr>
-                <th>الاسم</th>
-                <th>المفتاح</th>
-                <th>الصلاحيات</th>
-                <th>تاريخ الإنشاء</th>
-                <th>الإجراءات</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>مفتاح التطبيق الرئيسي</td>
-                <td>krk_*****a3b4</td>
-                <td>قراءة/كتابة</td>
-                <td>2023-10-15</td>
-                <td>
-                  <button class="action-btn">تعديل</button>
-                  <button class="action-btn delete">حذف</button>
-                </td>
-              </tr>
-              <tr>
-                <td>مفتاح الاختبارات</td>
-                <td>krk_*****c5d6</td>
-                <td>قراءة فقط</td>
-                <td>2023-11-20</td>
-                <td>
-                  <button class="action-btn">تعديل</button>
-                  <button class="action-btn delete">حذف</button>
-                </td>
-              </tr>
-              <tr>
-                <td>مفتاح الإنتاج</td>
-                <td>krk_*****e7f8</td>
-                <td>قراءة/كتابة</td>
-                <td>2023-12-05</td>
-                <td>
-                  <button class="action-btn">تعديل</button>
-                  <button class="action-btn delete">حذف</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-  </div>
-  
-  <!-- نافذة إنشاء مفتاح -->
-  <div class="modal" id="create-key-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>إنشاء مفتاح API جديد</h3>
-        <button class="close-btn">&times;</button>
-      </div>
-      
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="key-name">اسم المفتاح</label>
-          <input type="text" id="key-name" placeholder="مثال: مفتاح تطبيق الجوال">
-        </div>
-        
-        <div class="form-group">
-          <label>الصلاحيات</label>
-          <div class="permissions-list">
-            <label class="permission-item">
-              <input type="checkbox" name="permission" value="read">
-              <span class="checkmark"></span>
-              قراءة البيانات
-            </label>
-            <label class="permission-item">
-              <input type="checkbox" name="permission" value="write">
-              <span class="checkmark"></span>
-              كتابة البيانات
-            </label>
-            <label class="permission-item">
-              <input type="checkbox" name="permission" value="delete">
-              <span class="checkmark"></span>
-              حذف البيانات
-            </label>
-            <label class="permission-item">
-              <input type="checkbox" name="permission" value="admin">
-              <span class="checkmark"></span>
-              صلاحيات إدارية
-            </label>
-          </div>
-        </div>
-        
-        <button class="btn" id="generate-key-btn">إنشاء المفتاح</button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- نافذة عرض المفتاح -->
-  <div class="modal" id="key-result-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>تم إنشاء مفتاح API بنجاح</h3>
-      </div>
-      
-      <div class="modal-body">
-        <div class="warning-banner">
-          <span class="warning-icon">⚠️</span>
-          <p>سيتم عرض هذا المفتاح مرة واحدة فقط. يرجى حفظه في مكان آمن.</p>
-        </div>
-        
-        <div class="api-key-display">
-          <code id="generated-key">krk_sk_1234567890abcdef1234567890abcdef</code>
-          <button class="btn copy-btn" data-clipboard-target="#generated-key">نسخ المفتاح</button>
-        </div>
-        
-        <div class="key-info">
-          <p><strong>الاسم:</strong> <span id="key-info-name"></span></p>
-          <p><strong>الصلاحيات:</strong> <span id="key-info-perms"></span></p>
-          <p><strong>تاريخ الإنشاء:</strong> <span id="key-info-date"></span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // التحكم في النوافذ المنبثقة
-    document.getElementById('create-key-btn').addEventListener('click', () => {
-      document.getElementById('create-key-modal').style.display = 'flex';
-    });
-    
-    document.querySelector('.close-btn').addEventListener('click', () => {
-      document.getElementById('create-key-modal').style.display = 'none';
-    });
-    
-    // إنشاء مفتاح API
-    document.getElementById('generate-key-btn').addEventListener('click', () => {
-      const keyName = document.getElementById('key-name').value;
-      const permissions = Array.from(document.querySelectorAll('input[name="permission"]:checked'))
-        .map(input => input.value);
-      
-      if (!keyName) {
-        alert('يرجى إدخال اسم للمفتاح');
-        return;
-      }
-      
-      if (permissions.length === 0) {
-        alert('يرجى اختيار صلاحية واحدة على الأقل');
-        return;
-      }
-      
-      // إخفاء نافذة الإنشاء وإظهار نافذة النتيجة
-      document.getElementById('create-key-modal').style.display = 'none';
-      
-      // تعبئة بيانات المفتاح
-      document.getElementById('key-info-name').textContent = keyName;
-      document.getElementById('key-info-perms').textContent = permissions.join('، ');
-      document.getElementById('key-info-date').textContent = new Date().toLocaleDateString();
-      
-      document.getElementById('key-result-modal').style.display = 'flex';
-    });
-    
-    // نسخ المفتاح إلى الحافظة
-    document.querySelector('.copy-btn').addEventListener('click', () => {
-      const key = document.getElementById('generated-key').textContent;
-      navigator.clipboard.writeText(key).then(() => {
-        alert('تم نسخ المفتاح إلى الحافظة');
-      });
-    });
-  </script>
-</body>
-</html>
